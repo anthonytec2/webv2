@@ -1,6 +1,6 @@
 ---
 title: Anthony Bisulco
-role: Machine Learning Engineer at Samsung AI Center
+role: Machine Learning Engineer
 avatar_filename: me.jpeg
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
@@ -25,8 +25,8 @@ social:
     icon_pack: fab
     link: https://www.linkedin.com/
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Samsung AI Center
+    url: https://research.samsung.com/aicenter_ny
 education:
   courses:
     - course: PhD in Artificial Intelligence
