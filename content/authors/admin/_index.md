@@ -5,9 +5,11 @@ avatar_filename: me.jpeg
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Computer Vision
+  - Robotics
+  - Hardware
+  - Imaging
+  - Machine Learning
 social:
   - icon: graduation-cap
     icon_pack: fas
@@ -36,9 +38,6 @@ email: abisulco@gmail.com
 superuser: true
 highlight_name: false
 ---
+Hi, my name is Anthony Bisulco and I am a machine learning research engineer at [Samsung Research America](https://research.samsung.com/aicenter_ny) in the Samsung Artificial Intelligence Center(SAIC) NY working on robotics, machine learning and hardware systems. Previously, I was a graduate student in Electrical and Computer Engineer at [Cornell Tech(NYC)](https://tech.cornell.edu/). This website is devoted to my various personal projects and blog. My areas of interest are in [robotics](https://abisulco.com/visual_nav.html) , [machine learning](https://github.com/brendonwelsh/Machine-Learning-Final-Project), [biomedical imaging](https://abisulco.com/x-ray-imaging-pt1), optimization methods, parallel programming, computational accelerators and radar systems. If you have any feedback on the work in this portfolio, please feel free to contact me at arb426@cornell.ed
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
