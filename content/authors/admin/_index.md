@@ -23,7 +23,7 @@ organizations:
     url: https://research.samsung.com/aicenter_ny
 education:
   courses:
-    - course: PhD in Electrical and Systems Engineering
+    - course: Candidate for a PhD in Electrical and Systems Engineering
       institution: University of Pennsylvania
       year: ""
     - course: MEng in Electrical and Computer Engineering
