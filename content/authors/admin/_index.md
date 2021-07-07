@@ -2,8 +2,8 @@
 title: Anthony Bisulco
 role: Machine Learning Engineer
 avatar_filename: me.jpeg
-bio: My research interests include distributed robotics, mobile computing and
-  programmable matter.
+bio: "My research interests include robotics, machine learning, and computer
+  vision. "
 interests:
   - Computer Vision
   - Robotics
