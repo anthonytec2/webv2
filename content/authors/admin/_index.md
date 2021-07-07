@@ -1,7 +1,7 @@
 ---
 title: Anthony Bisulco
 role: Machine Learning Engineer
-avatar_filename: me.jpeg
+avatar_filename: avatar.jpg
 bio: "My research interests include robotics, machine learning, and computer
   vision. "
 interests:
