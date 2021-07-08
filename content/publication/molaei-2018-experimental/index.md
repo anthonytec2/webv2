@@ -6,6 +6,11 @@ authors: ["Ali Molaei", "Katherine Graham", "Luis Tirado", "Ashkan Ghanbarzadeh"
 publication_types: ["1"]
 abstract: ""
 featured: false
+links:
+  - url: https://ieeexplore.ieee.org/document/8608304
+    name: Paper
+    icon_pack: ai
+    icon: ieee
 publication: "*2018 IEEE International Symposium on Antennas and Propagation & USNC/URSI National Radio Science Meeting*"
 ---
 
