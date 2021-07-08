@@ -26,7 +26,19 @@ address:
   region: CA
   postcode: "94305"
   country: United States
-links: []
+links:
+  - url: Workshop
+    name: https://tub-rip.github.io/eventvision2021/
+    icon_pack: ai
+    icon: ieee
+  - url: https://www.youtube.com/watch?v=6ciNkcjV6EI
+    name: Video
+    icon_pack: fab
+    icon: youtube
+  - url: https://tub-rip.github.io/eventvision2021/slides/CVPRW21_Samsung_AIC-NY.pdf
+    name: Slides
+    icon: file-pdf
+    icon_pack: far
 tags: []
 categories: []
 projects: []
