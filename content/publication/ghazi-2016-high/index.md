@@ -6,6 +6,11 @@ authors: ["Galia Ghazi", "Ashkan Ghanbarzadeh", "Ali Molaei", "Luis Tirado", "An
 publication_types: ["1"]
 abstract: ""
 featured: false
+links:
+  - url: https://ieeexplore.ieee.org/document/7481388
+    name: Arxiv
+    icon_pack: ai
+    icon: ieee
 publication: "*2016 10th European Conference on Antennas and Propagation (EuCAP)*"
 ---
 
