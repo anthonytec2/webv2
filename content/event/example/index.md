@@ -33,7 +33,7 @@ projects: []
 image:
   caption: ""
   focal_point: Right
-  filename: featured.jpg
+  filename: featured.png
   alt_text: Event based camera fast motion estimation
 url_code: ""
 ---
