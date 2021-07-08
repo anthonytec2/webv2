@@ -30,6 +30,8 @@ abstract: This paper presents a Dynamic Vision Sensor (DVS) based system for
   discretized radius prediction error, and 25.03% median time to collision
   prediction error.
 featured: true
+image:
+  filename: featured.png
 date: 2020-01-01
 publishDate: 2021-07-07T10:30:11.699Z
 ---
