@@ -32,7 +32,7 @@ abstract: This paper presents a Dynamic Vision Sensor (DVS) based system for
 featured: true
 links:
   - url: https://arxiv.org/abs/2011.09427
-    name: Arxiv
+    name: Paper
     icon_pack: ai
     icon: arxiv
 image:

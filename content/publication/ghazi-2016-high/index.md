@@ -8,7 +8,7 @@ abstract: ""
 featured: false
 links:
   - url: https://ieeexplore.ieee.org/document/7481388
-    name: Arxiv
+    name: Paper
     icon_pack: ai
     icon: ieee
 publication: "*2016 10th European Conference on Antennas and Propagation (EuCAP)*"

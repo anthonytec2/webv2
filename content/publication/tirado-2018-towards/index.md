@@ -7,5 +7,10 @@ publication_types: ["1"]
 abstract: ""
 featured: false
 publication: "*2018 IEEE International Symposium on Antennas and Propagation & USNC/URSI National Radio Science Meeting*"
+links:
+  - url: https://ieeexplore.ieee.org/document/8608305
+    name: Paper
+    icon_pack: ai
+    icon: ieee
 ---
 

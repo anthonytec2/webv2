@@ -14,5 +14,10 @@ authors:
   - Daniel Lee
 publication: "*2020 International Joint Conference on Artificial Intelligence*"
 abstract: ""
+links:
+  - url: https://arxiv.org/abs/1906.08189
+    name: Paper
+    icon_pack: ai
+    icon: arxiv
 featured: true
 ---

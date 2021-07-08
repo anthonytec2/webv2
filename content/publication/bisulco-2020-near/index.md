@@ -13,7 +13,7 @@ publication: "*2020 IEEE Computer Society Annual Symposium on VLSI (ISVLSI)*"
 abstract: ""
 links:
   - url: https://arxiv.org/abs/2004.01689
-    name: Arxiv
+    name: Paper
     icon_pack: ai
     icon: arxiv
 featured: true

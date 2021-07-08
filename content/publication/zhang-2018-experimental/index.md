@@ -7,5 +7,10 @@ publication_types: ["2"]
 abstract: ""
 featured: false
 publication: "*IEEE Antennas and Wireless Propagation Letters*"
+links:
+  - url: https://ieeexplore.ieee.org/document/8489957
+    name: Paper
+    icon_pack: ai
+    icon: ieee
 ---
 

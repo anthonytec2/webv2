@@ -13,5 +13,10 @@ authors:
   - Daniel D Lee
 publication: "*2020 IEEE International Conference on Image Processing (ICIP)*"
 abstract: ""
+links:
+  - url: https://ieeexplore.ieee.org/document/9191148
+    name: Paper
+    icon_pack: ai
+    icon: ieee
 featured: true
 ---

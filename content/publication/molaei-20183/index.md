@@ -6,6 +6,11 @@ authors: ["Ali Molaei", "Anthony Bisulco", "Luis Tirado", "Alexander Zhu", "Dieg
 publication_types: ["2"]
 abstract: ""
 featured: false
+links:
+  - url: https://ieeexplore.ieee.org/document/8419209
+    name: Paper
+    icon_pack: ai
+    icon: ieee
 publication: "*IEEE Antennas and Wireless Propagation Letters*"
 ---
 
