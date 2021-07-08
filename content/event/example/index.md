@@ -27,8 +27,8 @@ address:
   postcode: "94305"
   country: United States
 links:
-  - url: Workshop
-    name: https://tub-rip.github.io/eventvision2021/
+  - url: https://tub-rip.github.io/eventvision2021/
+    name: Workshop
     icon_pack: ai
     icon: ieee
   - url: https://www.youtube.com/watch?v=6ciNkcjV6EI
