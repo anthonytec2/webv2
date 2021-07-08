@@ -31,8 +31,7 @@ address:
 links: []
 tags: []
 categories: []
-projects:
-  - example
+projects: []
 image:
   caption: ""
   focal_point: Right
