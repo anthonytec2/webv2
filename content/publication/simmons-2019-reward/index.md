@@ -1,7 +1,5 @@
 ---
 title: Reward Prediction Error as an Exploration Objective in Deep RL
-date: 2019-01-01
-publishDate: 2021-07-07T10:30:11.698Z
 publication_types:
   - "1"
 authors:
@@ -13,11 +11,34 @@ authors:
   - Sebastian Seung
   - Daniel Lee
 publication: "*2020 International Joint Conference on Artificial Intelligence*"
-abstract: ""
+abstract: >
+  A major challenge in reinforcement learning is exploration, when local
+  dithering methods such as epsilon-greedy sampling are insufficient to solve a
+  given task. Many recent methods have proposed to intrinsically motivate an
+  agent to seek novel states, driving the agent to discover improved reward.
+  However, while state-novelty exploration methods are suitable for tasks where
+  novel observations correlate well with improved reward, they may not explore
+  more efficiently than epsilon-greedy approaches in environments where the two
+  are not well-correlated. In this paper, we distinguish between exploration
+  tasks in which seeking novel states aids in finding new reward, and those
+  where it does not, such as goal-conditioned tasks and escaping local reward
+  maxima. We propose a new exploration objective, maximizing the reward
+  prediction error (RPE) of a value function trained to predict extrinsic
+  reward. We then propose a deep reinforcement learning method, QXplore, which
+  exploits the temporal difference error of a Q-function to solve hard
+  exploration tasks in high-dimensional MDPs. We demonstrate the exploration
+  behavior of QXplore on several OpenAI Gym MuJoCo tasks and Atari games and
+  observe that QXplore is comparable to or better than a baseline state-novelty
+  method in all cases, outperforming the baseline on tasks where state novelty
+  is not well-correlated with improved reward.
+featured: true
+image:
+  filename: featured.png
+date: 2019-01-01
 links:
   - url: https://arxiv.org/abs/1906.08189
     name: Paper
     icon_pack: ai
     icon: arxiv
-featured: true
+publishDate: 2021-07-07T10:30:11.698Z
 ---
