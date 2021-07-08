@@ -40,4 +40,4 @@ highlight_name: false
 ---
 Hi, my name is Anthony Bisulco and I am a machine learning research engineer at [Samsung Research America](https://research.samsung.com/aicenter_ny) in the Samsung Artificial Intelligence Center(SAIC) NY working on robotics, machine learning and hardware systems. Previously, I was a graduate student in Electrical and Computer Engineer at [Cornell Tech(NYC)](https://tech.cornell.edu/). This website is devoted to my various personal projects and blog. My areas of interest are in [robotics](https://abisulco.com/visual_nav.html) , [machine learning](https://github.com/brendonwelsh/Machine-Learning-Final-Project), [](https://abisulco.com/x-ray-imaging-pt1)computer vision, optimization methods, parallel programming, computational accelerators and radar systems. If you have any feedback on the work in this portfolio, please feel free to contact me at arb426@cornell.ed
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "assets/media/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
