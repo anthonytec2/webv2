@@ -9,8 +9,8 @@ all_day: false
 links:
   - url: https://cds.cern.ch/record/2238564?ln=en
     name: Video
-    icon_pack: far
-    icon: video
+    icon_pack: fab
+    icon: youtube
 event: Cern Semester
 event_url: https://cernsemester.blogspot.com/
 publishDate: 2021-07-09T00:01:39.304Z

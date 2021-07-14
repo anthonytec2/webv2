@@ -88,7 +88,11 @@ htime[i] = abs((math.floor(p0[i]) - p0[i] - 1e-4) / v[i])
 All of these tweaks were different things that I found while trying to debug the program. In the end, I compared the Numba and CUDA results on a 300x300 detector and only 4 pixels differed in values. If you have any idea how to fix some of these, please email me!  
 ### Timing
 
-{{< figure src="gpu.png" caption="Run Time Comparsion" numbered="true" >}}
+{{< figure src="gpu.png">}}
+
+<figure class="align-center">
+  <figcaption>Fig. 4 Run Time Comparsion </figcaption>
+</figure> 
 
 After getting this code in a runnable form, I compared the CUDA Numba, Numba and Python version in terms of running time. Looking at the CUDA results one can see the CUDA speedup increases with the number of pixels. The reason for this is the amortization of various things on the GPU with a larger number of pixels. Looking at the speed up the CUDA code is by far the fastest with a speedup of **6700x** compared to Python code and **67x** compared to Numba.
 

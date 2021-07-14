@@ -13,10 +13,10 @@ font_size: L
 # SEO
 
 site_type: Person
-local_business_type: ''
-org_name: ''
-description: ''
-twitter: ''
+local_business_type: 'Personal Website'
+org_name: 'Bisulco'
+description: 'Personal Portfolio for Anthony Bisulco'
+twitter: 'AnthonyBisulco'
 
 # Site header
 
@@ -40,6 +40,7 @@ address_format: en-us
 highlight: true
 highlight_languages:
   - r
+  - python
 math: true
 diagram: false
 privacy_pack: false
