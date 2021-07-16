@@ -6,8 +6,8 @@ url_pdf: ""
 summary: Fast Perception Action Systems for Event-based Vision
 title: 2021 Workshop on Event-based Vision
 location: Virtual
-date: 2030-06-19T13:00:00.000Z
-date_end: 2030-06-19T21:00:00.000Z
+date: 2021-06-19T13:00:00.000Z
+date_end: 2021-06-19T21:00:00.000Z
 all_day: false
 event: CVPR 2021
 event_url: https://tub-rip.github.io/eventvision2021/
