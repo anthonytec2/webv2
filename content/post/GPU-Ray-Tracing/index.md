@@ -12,6 +12,8 @@ lastmod: 2021-07-13T08:36:04-04:00
 featured: false
 draft: false
 slug: x-ray-gpu
+highlight: true
+
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.

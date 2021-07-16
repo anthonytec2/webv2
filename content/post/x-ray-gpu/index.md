@@ -12,6 +12,8 @@ lastmod: 2021-07-12T11:02:39-04:00
 featured: false
 draft: false
 slug: x-ray-imaging-pt1
+highlight: true
+
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
