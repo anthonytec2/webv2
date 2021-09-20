@@ -33,7 +33,7 @@ education:
       year: 2019
     - course: BSc in Electrical and Computer Engineering
       institution: Northeastern University
-      year: 2017
+      year: 2018
 email: abisulco@gmail.com
 superuser: true
 highlight_name: false
