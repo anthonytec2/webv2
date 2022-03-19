@@ -1,6 +1,6 @@
 ---
 title: Anthony Bisulco
-role: Machine Learning Engineer
+role: PhD Student
 avatar_filename: avatar.jpg
 bio: "My research interests include robotics, machine learning, and computer
   vision. "
@@ -21,8 +21,8 @@ social:
     icon_pack: fab
     link: https://www.linkedin.com/in/anthony-bisulco/
 organizations:
-  - name: Samsung AI Center
-    url: https://research.samsung.com/aicenter_ny
+  - name: University of Pennsylvania
+    url: https://www.grasp.upenn.edu/people/anthony-bisulco/
 education:
   courses:
     - course: Candidate for a PhD in Electrical and Systems Engineering
