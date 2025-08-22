@@ -16,9 +16,9 @@ image:
   filename: featured.png
 date: 2025-10-05
 links:
-#   - url: https://arxiv.org/abs/2407.13841
-#     name: Paper
-#     icon_pack: ai
-#     icon: arxiv
+  - url: https://arxiv.org/abs/2508.15404
+    name: Paper
+    icon_pack: ai
+    icon: arxiv
 publishDate: 2025-07-07T10:30:11.697Z
 ---
