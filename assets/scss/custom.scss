@@ -1,0 +1,256 @@
+/* Ensure Academicons (arXiv, etc.) are available even if theme bundle misses them */
+@import url('https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css');
+
+/* Featured section redesign */
+.home-section#featured {
+    padding-top: 1.25rem;
+}
+
+/* Navbar logo size: reduce height for a sleeker header */
+.navbar .navbar-brand img,
+.navbar-brand img,
+.navbar-brand .logo img,
+header .navbar-brand img {
+    max-height: 46px !important;
+    height: 46px !important;
+    width: auto;
+}
+
+/* Constrain width so the section reads more compact */
+.home-section#featured .container,
+.home-section#featured .container-xl,
+.home-section#featured .universal-wrapper,
+.home-section#featured .section-content {
+    max-width: 1035px;
+    /* ~15% wider than 900px */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Match About section (Biography) to the same width */
+.home-section#about .container,
+.home-section#about .container-xl,
+.home-section#about .universal-wrapper,
+.home-section#about .section-content {
+    max-width: 1035px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-section#featured .section-heading {
+    margin-bottom: 1.25rem;
+}
+
+/* Compact list items styled as modern cards */
+.home-section#featured .view-compact .media {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    /* image: 33%, text: 67% */
+    gap: 1.2rem;
+    align-items: start;
+    /* top-align */
+    padding: 10px;
+    border-radius: 10px;
+    background: transparent;
+    /* inherit theme bg to avoid white boxes */
+    box-shadow: none;
+    transition: transform 0.12s ease;
+}
+
+/* Force image/thumbnail wrapper to the left column, text to the right */
+.home-section#featured .view-compact .media>.media-body {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    min-width: 0;
+    /* allow text to wrap within grid */
+}
+
+.home-section#featured .view-compact .media>.ml-3,
+.home-section#featured .view-compact .media>.mr-3,
+.home-section#featured .view-compact .media>.media-left,
+.home-section#featured .view-compact .media>.media-right {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    justify-self: stretch;
+}
+
+@media (max-width: 640px) {
+    .home-section#featured .view-compact .media {
+        grid-template-columns: 100px 1fr;
+        padding: 8px;
+    }
+}
+
+.home-section#featured .view-compact .media:hover {
+    transform: translateY(-2px);
+}
+
+/* Thumbnails */
+.home-section#featured .view-compact img,
+.home-section#featured .view-compact .media-left img {
+    width: 100%;
+    height: 100%;
+    max-height: 96px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Typography */
+.home-section#featured .view-compact .media-body .article-title {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.25rem;
+}
+
+.home-section#featured .view-compact .article-metadata,
+.home-section#featured .view-compact .pub-publication {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.home-section#featured .view-compact .btn-links,
+.home-section#featured .view-compact .btn-links a {
+    margin-top: 0.3rem;
+}
+
+/* Small chips */
+.home-section#featured .badge,
+.home-section#featured .publication-type,
+.home-section#featured .article-metadata .btn {
+    border-radius: 999px;
+    padding: 2px 8px;
+}
+
+/* Section title: smaller and tighter */
+.home-section#featured .section-heading h1,
+.home-section#featured .section-heading .section-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+/* Reduce vertical spacing between items */
+.home-section#featured .stream-item,
+.home-section#featured .view-compact .media {
+    margin-bottom: 1.1rem;
+    /* a bit more breathing room */
+}
+
+/* --- Overrides to use actual markup: .media.stream-item with image on the left --- */
+.home-section#featured .media.stream-item {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    /* image: 33%, text: 67% */
+    gap: 1.2rem;
+    align-items: start;
+    padding: 10px;
+    border-radius: 10px;
+    background: transparent;
+    /* inherit theme bg */
+    box-shadow: none;
+    transition: transform 0.12s ease;
+}
+
+.home-section#featured .media.stream-item>.media-body {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    min-width: 0;
+    color: inherit;
+}
+
+.home-section#featured .media.stream-item>.media-body a {
+    color: inherit;
+}
+
+.home-section#featured .media.stream-item>.ml-3,
+.home-section#featured .media.stream-item>.mr-3,
+.home-section#featured .media.stream-item>.media-left,
+.home-section#featured .media.stream-item>.media-right {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    /* fill left column (33% width) */
+    display: block;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .home-section#featured .media.stream-item {
+        grid-template-columns: 110px 1fr;
+        padding: 8px;
+    }
+}
+
+.home-section#featured .media.stream-item:hover {
+    transform: translateY(-2px);
+}
+
+.home-section#featured .media.stream-item img,
+.home-section#featured .media.stream-item .media-left img,
+.home-section#featured .media.stream-item .ml-3 img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    /* scale oversized images proportionally within column */
+    border-radius: 8px;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.home-section#featured .media.stream-item .media-body .article-title {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+}
+
+/* About: add more spacing between social/profile icons */
+.home-section#about .network-icon {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.85rem;
+    row-gap: 0.5rem;
+}
+
+.home-section#about .network-icon li {
+    margin-right: 0.85rem;
+}
+
+.home-section#about .network-icon li:last-child {
+    margin-right: 0;
+}
+
+/* Button order: Paper, Project, Cite */
+.home-section#featured .btn-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+/* Default position for all buttons */
+.home-section#featured .btn-links a {
+    order: 2;
+}
+
+/* Move Cite button to the end */
+.home-section#featured .btn-links a.js-cite-modal {
+    order: 3 !important;
+}
+
+/* Common patterns for Paper links → first */
+.home-section#featured .btn-links a[href*="arxiv.org"],
+.home-section#featured .btn-links a[href*="ieeexplore.ieee.org"],
+.home-section#featured .btn-links a[href*="doi.org"],
+.home-section#featured .btn-links a[href*="openaccess.thecvf.com"],
+.home-section#featured .btn-links a[href$=".pdf"],
+.home-section#featured .btn-links a:has(> i.ai) {
+    order: 1 !important;
+}

@@ -5,7 +5,7 @@
 
 title: Anthony Bisulco's Portfolio # Website name
 baseurl: 'https://abisulco.com/' # Website URL
-copyright: '2024 Anthony Bisulco' # Footer text, e.g. '© {year} Me'
+copyright: '2025 Anthony Bisulco' # Footer text, e.g. '© {year} Me'
 
 ############################
 ## LANGUAGE
@@ -48,7 +48,7 @@ outputs:
   section: [HTML, RSS]
 imaging:
   resampleFilter: lanczos
-  quality: 75
+  quality: 90
   anchor: smart
 timeout: 600000
 taxonomies:
