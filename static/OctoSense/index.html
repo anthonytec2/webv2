@@ -10,30 +10,40 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="OctoSense: Self-Supervised Learning for Multimodal Robot Perception">
   <meta property="og:description" content="An open sensor platform, a 59-hour time-synchronized multimodal dataset (RGB, event, LiDAR, thermal, IMU, GPS, CAN), and a late-fusion masked autoencoder that stays robust where image-only models fail.">
-  <meta property="og:image" content="https://abisulco.com/OctoSense/static/images/social_preview.jpg">
+  <meta property="og:image" content="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/social_preview.jpg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="720">
   <meta property="og:url" content="https://abisulco.com/OctoSense/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OctoSense: Self-Supervised Learning for Multimodal Robot Perception">
   <meta name="twitter:description" content="An open sensor platform, a 59-hour multimodal dataset, and a late-fusion masked autoencoder robust where image-only models fail.">
-  <meta name="twitter:image" content="https://abisulco.com/OctoSense/static/images/social_preview.jpg">
+  <meta name="twitter:image" content="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/social_preview.jpg">
   <link rel="icon" type="image/png" href="./static/images/favicon.png">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
+
+<!-- Media is HF-hosted so this Pages repo stays small. -->
+<!-- HF = https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets -->
 
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <img src="./static/images/banner_inline.png"
+          <img src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/banner_inline.png"
                alt="OctoSense" style="max-width:720px; width:100%; margin: 0 auto 0.75rem;">
           <h2 class="subtitle is-4 publication-title">Self-Supervised Learning for Multimodal Robot Perception</h2>
           <div class="is-size-5 publication-authors">
@@ -78,5 +88,624 @@
   </div>
 </section>
 
+<!-- Teaser: driving overview reel -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline controls width="100%">
+        <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/os_vid.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        One rig, eight sensors, one clock, synchronized multimodal driving across day, night, and degraded conditions.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Motivation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Why multimodal self-supervised learning?</h2>
+        <div class="content has-text-justified is-size-5">
+          <p>
+            Self-supervised foundation models, DINO, SigLIP, V-JEPA, transformed robot perception, but
+            they are <strong>vision-only</strong>, and in the real world no single sensor suffices. Cameras degrade
+            under <strong>low light, high dynamic range, and rapid motion</strong>; LiDAR is accurate but sparse with
+            poor semantics. Every sensor has different rates, resolutions, noise, and failure modes, and they
+            fail in different ways. Robust robot perception needs representations that survive these failures, yet
+            self-supervised learning has stayed almost entirely on vision and text.
+          </p>
+        </div>
+        <blockquote style="border-left:4px solid #3273dc; padding:0.75rem 1.25rem; margin:1.5rem auto; max-width:760px; text-align:left; background:#f7f9fc; font-size:1.15rem; font-style:italic; color:#333;">
+          &ldquo;The defining enabling technology across all field applications is multi-sensor fusion robust to
+          environmental degradation, the problem that keeps the most capable field robots indoors.&rdquo;
+          <br><span style="font-style:normal; font-size:0.95rem; color:#666;">Global Robotics Technology Roadmap 2025&ndash;2035</span>
+        </blockquote>
+        <div class="content has-text-justified is-size-5">
+          <p>
+            <strong>OctoSense</strong> takes this on directly. We release an open sensor <strong>platform</strong>, a
+            59-hour time-synchronized <strong>dataset</strong>, and a <strong>method</strong>, a late-fusion
+            masked autoencoder that fuses every sensor into one representation and stays robust.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three contributions -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-one-third has-text-centered">
+        <span style="color:#3273dc; display:inline-block;"><i class="fas fa-car fa-4x"></i></span>
+        <h3 class="title is-5" style="margin-top:1.1rem;">Platform &amp; dataset</h3>
+        <p class="content">
+          An open-source rig with eight time-synchronized sensors, and <strong>59 hours / 2,474 km</strong> of
+          driving, one of the largest event-inclusive robotics datasets, with day, night, and degraded-sensor
+          conditions.
+        </p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <span style="color:#3273dc; display:inline-block;"><i class="fas fa-layer-group fa-4x"></i></span>
+        <h3 class="title is-5" style="margin-top:1.1rem;">Multimodal MAE</h3>
+        <p class="content">
+          Modality-specific tokenizers feed a shared late-fusion masked autoencoder. Token caching at inference makes
+          it real-time, <strong>6.68 ms</strong> on an RTX 5090, <strong>112 ms</strong> on an embedded Orin NX.
+        </p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <span style="color:#3273dc; display:inline-block;"><i class="fas fa-eye fa-4x"></i></span>
+        <h3 class="title is-5" style="margin-top:1.1rem;">Robust perception</h3>
+        <p class="content">
+          Beats image-only foundation models on depth, flow, segmentation, and ego-motion, and the advantage
+          <strong>grows at night and under sensor degradation</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dataset & platform -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">The platform &amp; dataset</h2>
+          <div class="content has-text-justified is-size-5">
+            <p>
+              OctoSense carries <strong>eight sensors</strong> on one rig and places them on a single timeline with a
+              <strong>hardware pulse-per-second clock</strong>, a unique six-pulse identifier every four minutes and fifteen seconds
+              lets every stream realign even after a dropped trigger. At native rates the platform produces ~1.7 GB/s;
+              on-board compression (LiDAR/event packets, H.265 video) cuts that <strong>21&times;</strong> to 78.7 MB/s
+              with no dropped data. Calibration uses a retro-reflective circle on an AprilGrid jointly visible to the
+              cameras and LiDAR.
+            </p>
+            <p>
+              The first release spans urban, suburban, and rural driving on Long Island and in Philadelphia across
+              sunrise, daytime, sunset, and night, including sun-flare and packet-loss degradation. Every 5-second
+              window is captioned (Gemma 4) and embedded (Qwen3) into a FAISS index, so the data is searchable in natural
+              language.
+            </p>
+          </div>
+          <table class="table is-fullwidth is-hoverable" style="background:transparent;">
+            <thead><tr><th>Modality</th><th>Sensor</th><th>Info</th><th>Rate</th></tr></thead>
+            <tbody>
+              <tr><td><strong>RGB</strong> (stereo)</td><td>2&times; FLIR Blackfly S</td><td>1920&times;1456</td><td>100 Hz</td></tr>
+              <tr><td><strong>Event</strong> (stereo)</td><td>2&times; SilkyEV VGA (Prophesee)</td><td>640&times;480</td><td>&asymp;7 MEv/s</td></tr>
+              <tr><td><strong>Thermal</strong></td><td>FLIR A35</td><td>320&times;256</td><td>50 Hz</td></tr>
+              <tr><td><strong>LiDAR</strong></td><td>Ouster OS1-64</td><td>64 &times; 2048</td><td>10 Hz</td></tr>
+              <tr><td><strong>IMU</strong></td><td>VectorNav VN-100T</td><td>Acc/Gyro/Mag/Baro</td><td>400 Hz</td></tr>
+              <tr><td><strong>GNSS</strong></td><td>u-blox ZED-F9P</td><td>RTK (NTRIP)</td><td>5 Hz</td></tr>
+              <tr><td><strong>Proprioception</strong></td><td>Vehicle CAN / quadruped joints</td><td>steering, throttle, brake / joint angles</td><td>50&ndash;100 Hz</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Custom hardware -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Custom hardware</h2>
+        </div>
+      </div>
+      <div class="columns is-vcentered">
+        <div class="column is-half has-text-centered">
+          <img src="./static/images/hw_cad.png" alt="CAD rendering of the OctoSense sensor rig" style="width:100%; max-width:480px; border-radius:4px;">
+          <p class="is-size-5 has-text-grey" style="margin-top:0.5rem;">CAD of the rig: stereo RGB + event cameras, LiDAR, thermal, IMU, and GPS on one mount.</p>
+        </div>
+        <div class="column is-half has-text-centered">
+          <img src="./static/images/hw_syncboard.png" alt="Custom time-synchronization circuit board" style="width:100%; max-width:480px; border-radius:4px; background:white; padding:0.5rem;">
+          <p class="is-size-5 has-text-grey" style="margin-top:0.5rem;">The custom SyncBoard that hardware-triggers every sensor off one clock.</p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content has-text-justified is-size-5">
+            <p>
+              Everything here is <strong>open source</strong>, the mechanical CAD, the sensor mounts, and the custom
+              electronics. The rig carries all eight sensors on one adjustable bar above a desktop-class CPU, powered by a
+              24&nbsp;V battery for about an hour of mobile operation.
+            </p>
+            <p>
+              The board on the right is our custom <strong>SyncBoard</strong>, the heart of the platform's hardware time
+              synchronization. A temperature-compensated oscillator and a microcontroller generate a pulse-per-second
+              trigger and fan it out across the PCB to every sensor, so all streams are captured on one shared hardware
+              clock.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diverse conditions -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Diverse conditions</h2>
+
+        <div id="cond-carousel" style="position:relative; width:100%; aspect-ratio:2/1; border-radius:4px; overflow:hidden; background:#111;">
+          <img class="cond-slide" src="./static/images/scene_grid.jpg" alt="Representative OctoSense scenes: night glare, the Big Duck, a bridge over water, a snowy forest descent, sun glare toward Philadelphia City Hall, and a sandy pine-forest road" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:1; transition:opacity 1s ease;">
+          <img class="cond-slide" src="./static/images/degraded_perception.jpg" alt="Degraded perception: tunnels, blinding sun, lens flare, fog, and near-darkness washing out the camera" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity 1s ease;">
+        </div>
+
+        <div class="content has-text-justified is-size-5" style="margin-top:1rem;">
+          <p class="cond-cap" style="display:block;">
+            OctoSense spans a wide range of environments and lighting across Long Island and Philadelphia,
+            from <strong>night-time glare</strong> and <strong>low-sun lens flare</strong> to roadside landmarks,
+            water crossings, snow-covered descents, and unpaved forest roads. This breadth is exactly where
+            single-camera models struggle and multi-sensor fusion pays off.
+          </p>
+          <p class="cond-cap" style="display:none;">
+            <strong>Degraded perception.</strong> Tunnels, blinding sun, lens flare, fog, and near-darkness routinely
+            wash out the camera. OctoSense deliberately captures these failure cases, where image-only models break
+            down and complementary sensors keep the scene observable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Rerun viewer -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Play with the time-synchronized data</h2>
+        <p class="content is-size-5">
+          A live <a href="https://rerun.io" target="_blank" rel="noopener">Rerun</a> viewer with a short clip from a
+          city drive, every sensor on one shared timeline: stereo RGB + event cameras, infrared, the LiDAR point cloud,
+          IMU, GPS, and CAN signals, plus scene captions. Scrub the timeline, rotate the 3D view, and toggle streams,
+          right here in the browser.
+        </p>
+        <div style="position:relative; width:100%; height:880px; max-height:90vh; max-width:1100px; margin:0 auto; border-radius:6px; overflow:hidden; box-shadow:0 2px 14px rgba(0,0,0,0.15);">
+          <iframe src="https://app.rerun.io/version/0.33.1/?url=https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/octosense_all.rrd&amp;theme=dark"
+                  width="100%" height="100%" style="position:absolute; inset:0; border:0;"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="content is-size-5 has-text-grey" style="margin-top:0.75rem;">
+          A 15&nbsp;s clip streamed into the hosted Rerun viewer; first load takes a few seconds, sensors load progressively.
+          <a href="https://app.rerun.io/version/0.33.1/?url=https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/octosense_all.rrd&amp;theme=dark"
+             target="_blank" rel="noopener"><strong>Open in a full-page viewer&nbsp;&#8599;</strong></a>.
+          Generate full recordings from any sequence with the open-source viz tooling in the repository.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Coverage map -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Where we drove</h2>
+        <img src="./static/images/coverage_map.png" alt="GPS routes covering Philadelphia, PA and Long Island, NY" width="100%" style="max-width:1000px; border-radius:4px;">
+        <p class="content is-size-5 has-text-grey" style="margin-top:0.75rem;">
+          2,474 km of routes across <strong>Philadelphia, PA</strong> and <strong>Long Island, NY</strong>, spanning
+          highway, residential, urban, and rural driving across many sessions, days, and times of day.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Datasets comparison -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">How OctoSense compares</h2>
+      <p class="content is-size-5">
+        Among autonomous-driving and event-inclusive multimodal datasets, OctoSense offers the
+        <strong>largest amount of event-inclusive data</strong> (59 hrs / 2,474 km), and includes other sensors such as
+        RGB, thermal, LiDAR, IMU, GPS, and CAN.
+      </p>
+      <img src="./static/images/datasets_table.png" alt="Comparison of OctoSense against autonomous-driving and event-inclusive multimodal datasets by duration, sensors, and tasks" width="100%" style="max-width:920px; margin:0.5rem auto 0; background:white; border-radius:4px; padding:0.5rem;">
+    </div>
+  </div>
+</section>
+
+<!-- Semantic search -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Search the data in natural language</h2>
+        <div class="content has-text-justified is-size-5">
+          <p>
+            Every 5-second window is captioned with <strong>Gemma 4</strong> and embedded with
+            <strong>Qwen3-Embedding-8B</strong> into a hybrid <strong>FAISS&nbsp;+&nbsp;BM25</strong> index, so all
+            2,474&nbsp;km are searchable by description. Type a phrase, <em>&ldquo;police vehicle&rdquo;</em>,
+            <em>&ldquo;wet road at night&rdquo;</em>, <em>&ldquo;pedestrian crossing&rdquo;</em>, and get back
+            clips with their captions, source sequence, and timestamps. We release the prebuilt index alongside the data.
+          </p>
+        </div>
+        <img src="./static/images/sem_search.png" alt="Semantic search web UI: the query 'Police Vehicle' returns ranked video clips with captions, source sequences, and timestamps" width="100%" style="max-width:1000px; border-radius:6px; box-shadow:0 2px 14px rgba(0,0,0,0.12);">
+        <p class="content is-size-5 has-text-grey" style="margin-top:0.75rem;">
+          The search UI: a natural-language query returns the most relevant moments across the dataset, each with its
+          caption, source sequence, and time range.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ground truth -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Ground truth</h2>
+        <video id="gt" autoplay controls muted loop playsinline width="100%"
+               poster="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/gt_grid_poster.png">
+          <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/gt_grid.mp4" type="video/mp4">
+        </video>
+        <div class="content has-text-justified is-size-5" style="margin-top:1rem;">
+          <p>
+            From LiDAR-inertial odometry (RKO-LIO) we derive <strong>metric depth</strong> by accumulating 61 deskewed
+            scans and projecting into the rectified RGB image, moving objects removed with YOLO26-medium masks, minimum
+            depth kept per pixel. <strong>Ego-motion optical flow</strong> follows by reprojecting that depth into future
+            frames, and <strong>semantic segmentation</strong> pseudo-labels come from EoMT trained on Cityscapes. Together with
+            the fused odometry trajectory, this gives per-sequence supervision for every downstream task.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method: a late-fusion multimodal MAE</h2>
+        <div class="content has-text-justified is-size-5">
+          <p>
+            The sensors look nothing alike, a dense 2D array for RGB, a high-frequency point process for the event
+            camera, a sparse pointcloud for LiDAR, a fast multi-channel time series for the IMU. We learn one fused
+            representation by masking part of the input and reconstructing it, self-supervised. The pipeline has four
+            stages, walked through below: per-modality input representations, frozen tokenized targets, a late-fusion
+            masked autoencoder, and lightweight task probes.
+          </p>
+        </div>
+
+        <!-- Method figures from the paper -->
+        <div class="content" style="margin-top:2.5rem;">
+
+          <h3 class="title is-4 has-text-left">1 &middot; Sensor representations</h3>
+          <p class="has-text-justified is-size-5">
+            Every modality has to become a sequence of tokens, but each arrives in a different form. The
+            <strong>event</strong> stream is high-frequency and noisy: we drop isolated events with a spatio-temporal
+            filter, then run a bank of <strong>leaky integrators</strong> at several bandwidths to turn the asynchronous
+            stream into a multi-channel image that captures motion across timescales. <strong>LiDAR</strong> is deskewed
+            and projected into a forward 64&times;512 range image; <strong>RGB</strong> is undistorted and rectified into
+            ViT patches; and the <strong>IMU</strong> accelerometer/gyroscope are convolved over a 1.6&nbsp;s window and
+            pooled with cross-attention. Each image-like modality is then split into patches.
+          </p>
+          <figure class="image" style="margin:0.5rem 0 0.5rem;">
+            <img src="./static/images/method_sensors.png" alt="Sensor representations" style="width:100%; background:white;">
+            <figcaption class="is-size-6 has-text-grey has-text-justified" style="margin-top:0.4rem;">
+              Each modality is converted to a tokenizable form before patch tokenization.
+            </figcaption>
+          </figure>
+
+          <h3 class="title is-4 has-text-left" style="margin-top:2.25rem;">2 &middot; Tokenized targets</h3>
+          <p class="has-text-justified is-size-5">
+            Reconstructing raw pixels breaks down across modalities, their loss scales and token counts differ
+            wildly, so training collapses onto the easy ones. Instead, each modality gets its own autoencoder trained
+            <em>ahead of time</em> with <strong>finite scalar quantization (FSQ)</strong>, mapping every patch to a
+            bounded discrete code. The MAE then predicts these frozen codes rather than pixels, putting all modalities on
+            comparable footing. Per-modality tweaks we make are: LiDAR adds a validity mask for ray-drop holes,
+            events use a weighted active/inactive loss, and the IMU is mean-removed and normalized.
+          </p>
+          <figure class="image" style="margin:0.5rem 0 0.5rem;">
+            <img src="./static/images/method_tokens.png" alt="Tokenized targets" style="width:100%; background:white;">
+            <figcaption class="is-size-6 has-text-grey has-text-justified" style="margin-top:0.4rem;">
+              A frozen per-modality FSQ encoder/decoder supplies bounded discrete targets for the MAE.
+            </figcaption>
+          </figure>
+
+          <h3 class="title is-4 has-text-left" style="margin-top:2.25rem;">3 &middot; Late-fusion MAE</h3>
+          <p class="has-text-justified is-size-5">
+            The fusion model masks the tokens in <strong>spatio-temporal tubes</strong>, each
+            modality's keep-ratio drawn from a <strong>Dirichlet distribution</strong> so that, across training, the model
+            sees everything from a single dominant sensor to a near-uniform mix, and even whole sensors dropped. The
+            encoder is factorized into three attention stages: <strong>spatial</strong> within each frame,
+            <strong>temporal</strong> along each patch's tube across the 8 timesteps, and finally <strong>multimodal</strong>
+            across all surviving tokens, with a 4D rotary embedding over <em>(time, u, v, sensor)</em>.
+            A shared decoder with per-modality heads reconstructs the FSQ codes under an
+            &#8467;<sub>1</sub> loss. At inference, per-modality tokens are <strong>cached</strong> within the window so
+            only new measurements are re-encoded, keeping the late-fusion encoder real-time, about 60% faster than early
+            fusion.
+          </p>
+          <figure class="image" style="margin:0.5rem 0 0.5rem;">
+            <img src="./static/images/method_fusion.png" alt="Late-fusion MAE architecture" style="width:100%; background:white;">
+            <figcaption class="is-size-6 has-text-grey has-text-justified" style="margin-top:0.4rem;">
+              Tube masking (top left), Dirichlet allocation across modalities (top right), and the three-stage encoder/decoder (bottom).
+            </figcaption>
+          </figure>
+
+          <h3 class="title is-4 has-text-left" style="margin-top:2.25rem;">4 &middot; Downstream probes</h3>
+          <p class="has-text-justified is-size-5">
+            The pretrained encoder is then <strong>frozen</strong>, and lightweight probes read off task predictions. A
+            <strong>Dense Prediction Transformer</strong> fuses features from four encoder layers to predict optical flow,
+            depth, and segmentation; a separate <strong>attentive probe</strong> cross-attends to the final encoder layer
+            to regress ego-motion, relative pose, steering, speed, and angular/linear velocity. Only these small
+            heads are trained per task; the representation itself is never fine-tuned, so the numbers reflect the quality
+            of the learned features directly.
+          </p>
+          <figure class="image" style="margin:0.5rem 0 0.5rem;">
+            <img src="./static/images/method_probes.png" alt="Downstream probes" style="width:100%; background:white;">
+            <figcaption class="is-size-6 has-text-grey has-text-centered" style="margin-top:0.4rem;">
+              Frozen-feature probes: a DPT for dense tasks and an attentive probe for ego-motion.
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Masked reconstruction demo -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Reconstruction under many masks</h2>
+        <video id="recon" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/masked_recon.mp4" type="video/mp4">
+        </video>
+        <div class="content has-text-justified is-size-5" style="margin-top:1rem;">
+          <p>
+            A single driving sequence, tiled into non-overlapping ~1.4 s windows. Each window draws a fresh
+            <strong>Dirichlet mask</strong>, so the per-sensor masking ratio varies widely as the clip plays
+           , sometimes hiding most of the camera, sometimes most of the LiDAR. For every window we show
+            <strong>Ground Truth, Masked Input, and Reconstruction</strong> across <strong>RGB, event, LiDAR,
+            and IMU</strong>. The model rebuilds each modality from whatever sparse, cross-modal context survives
+            the mask, the core self-supervised objective behind the representation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results: the gap widens when vision fails</h2>
+          <div class="content has-text-justified is-size-5">
+            <p>
+              Frozen and probed across depth, optical flow, semantic segmentation, and ego-motion, the late-fusion MAE
+              <strong>outperforms every image-only foundation model</strong> (DINOv2/v3, SigLIP 2, Perception Encoder,
+              V-JEPA 2.1) on all tasks. The story is sharpest under
+              <strong>degraded and nighttime</strong> conditions.
+            </p>
+          </div>
+
+          <!-- Headline stat callouts (degraded conditions, vs best vision model V-JEPA 2.1) -->
+          <div class="columns is-centered has-text-centered is-variable is-4" style="margin:2rem 0 1.5rem;">
+            <div class="column">
+              <p class="title is-2" style="margin-bottom:0.6rem; color:#3273dc; line-height:1.1;">4.77 m</p>
+              <p class="subtitle is-5" style="line-height:1.35; margin-top:0.9rem;">depth RMSE under<br>degradation <em>(vs 7.40 m)</em></p>
+            </div>
+            <div class="column">
+              <p class="title is-2" style="margin-bottom:0.6rem; color:#3273dc; line-height:1.1;">2.12 px</p>
+              <p class="subtitle is-5" style="line-height:1.35; margin-top:0.9rem;">flow error under<br>degradation <em>(vs 10.85 px)</em></p>
+            </div>
+            <div class="column">
+              <p class="title is-2" style="margin-bottom:0.6rem; color:#3273dc; line-height:1.1;">&asymp;2&times;</p>
+              <p class="subtitle is-5" style="line-height:1.35; margin-top:0.9rem;">larger depth advantage<br>at night vs. day</p>
+            </div>
+            <div class="column">
+              <p class="title is-2" style="margin-bottom:0.6rem; color:#3273dc; line-height:1.1;">112 ms</p>
+              <p class="subtitle is-5" style="line-height:1.35; margin-top:0.9rem;">to encode all sensors<br>on an embedded Jetson Orin NX</p>
+            </div>
+          </div>
+
+          <div class="content has-text-justified is-size-5" style="margin-top:1rem;">
+            <p>
+              Ego-motion, translation, rotation, and steering, is predicted essentially perfectly
+              (~0.06 m, ~0.23&deg;), because the model reads LiDAR and inertial signal that RGB-only encoders simply lack.
+              Leave-one-out probes show where each sensor matters: <strong>LiDAR dominates both ego-motion and dense
+              prediction</strong>, dropping it alone sends depth from 4.73 to 6.74&nbsp;m and flow from 1.97 to 7.19&nbsp;px,
+              while <strong>RGB anchors the tokens for segmentation</strong>. The representation also
+              <strong>transfers zero-shot to M3ED</strong>, a different rig and sensor configuration, staying
+              competitive with foundation models trained on orders of magnitude more data.
+            </p>
+          </div>
+
+          <!-- Qualitative rollout video -->
+          <video id="rollout" autoplay controls muted loop playsinline width="100%" style="margin-top:1rem; max-width:860px;">
+            <source src="./static/videos/rollout_dense_v4.mp4" type="video/mp4">
+          </video>
+          <p class="content is-size-5 has-text-grey" style="margin-top:0.4rem;">
+            Qualitative dense-perception rollout on one test sequence, rows: optical flow, depth, segmentation;
+            columns: input RGB, ground truth, DINO v3, V-JEPA 2.1, and our late-fusion MAE.
+          </p>
+
+          <!-- Compact results table (Table 1, daytime test) -->
+          <div class="content" style="margin-top:1.5rem;">
+            <table class="table is-hoverable" style="margin:0 auto; max-width:840px; font-size:1.15rem; background:transparent; border-collapse:collapse;">
+              <thead>
+                <tr style="border-bottom:2px solid #363636;">
+                  <th style="text-align:left; padding:0.6rem 0.9rem;">Encoder <span class="has-text-grey is-size-6">(daytime test)</span></th>
+                  <th class="has-text-centered" style="padding:0.6rem 0.9rem;">Depth&nbsp;(m)&nbsp;&darr;</th>
+                  <th class="has-text-centered" style="padding:0.6rem 0.9rem;">Flow&nbsp;(px)&nbsp;&darr;</th>
+                  <th class="has-text-centered" style="padding:0.6rem 0.9rem;">Seg&nbsp;(mIoU)&nbsp;&uarr;</th>
+                  <th class="has-text-centered" style="padding:0.6rem 0.9rem;">Trans.&nbsp;(m)&nbsp;&darr;</th>
+                  <th class="has-text-centered" style="padding:0.6rem 0.9rem;">Rot.&nbsp;(&deg;)&nbsp;&darr;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:0.55rem 0.9rem;">DINO v3</td>
+                  <td class="has-text-centered" style="padding:0.55rem 0.9rem;">6.93</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">19.43</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.382</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.93</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.79</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.55rem 0.9rem;">V-JEPA 2.1</td>
+                  <td class="has-text-centered" style="padding:0.55rem 0.9rem;">6.38</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">9.13</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.402</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.77</td><td class="has-text-centered" style="padding:0.55rem 0.9rem;">0.47</td>
+                </tr>
+                <tr style="background:#eaf2ff; font-weight:700;">
+                  <td style="padding:0.6rem 0.9rem; color:#2a64c4; border-radius:6px 0 0 6px;">Late-fusion MAE (ours)</td>
+                  <td class="has-text-centered" style="padding:0.6rem 0.9rem;">4.73</td><td class="has-text-centered" style="padding:0.6rem 0.9rem;">1.97</td><td class="has-text-centered" style="padding:0.6rem 0.9rem;">0.411</td><td class="has-text-centered" style="padding:0.6rem 0.9rem;">0.06</td><td class="has-text-centered" style="padding:0.6rem 0.9rem; border-radius:0 6px 6px 0;">0.24</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="is-size-5 has-text-grey" style="max-width:840px; margin:0.9rem auto 0; text-align:center;">Daytime test split; lower is better except segmentation (mIoU over 19 Cityscapes classes), reported where speed &ge; 5&nbsp;mph. Full results, nighttime, and degraded splits are in the paper.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Beyond driving: extra platforms -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Beyond driving</h2>
+        <p class="content is-size-5">
+          The same rig has been deployed beyond the car. The data release additionally includes
+          <strong>boat</strong> and <strong>Unitree Go2-W quadruped</strong> sequences, tagged by a
+          <code>platform</code> column in the metadata, a first step toward one perception model across very
+          different platforms.
+        </p>
+        <video id="platforms" autoplay controls muted loop playsinline width="100%" style="max-width:760px; margin:0 auto;">
+          <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/platforms.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Limitations & future work -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Limitations &amp; future work</h2>
+        <div class="content has-text-justified is-size-5">
+          <p>
+            OctoSense is a research prototype. The dataset is orders of magnitude smaller than those used to train
+            image foundation models like DINO and V-JEPA; scaling it up, ideally through a community-wide effort
+            to pool multi-sensor data, is the path toward a true <strong>foundation model for multi-modal robot
+            perception</strong>.
+          </p>
+          <p>
+            A key next step is moving beyond the 1.4&nbsp;s window to <strong>longer temporal context with recurrent
+            architectures</strong>, which would unlock tasks like object tracking and 3D instance detection and further
+            cut inference cost. Event cameras and the IMU contribute little at our 5&nbsp;Hz evaluation rate but should
+            shine on high-speed, low-latency tasks, another direction we leave open, along with studying the
+            unique, synergistic, and redundant information these sensors carry.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download / usage -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Get the data</h2>
+      <p class="content is-size-5">
+        The dataset (HDF5 schema, per-sequence metadata, downloads) lives on the
+        <a href="https://huggingface.co/datasets/anthonytec2/OctoSense">Hugging Face dataset page</a>.
+        Start with the <a href="https://colab.research.google.com/drive/11hBm5dH--7HueAFCKtaAFnDAJul-52fb?usp=sharing">getting-started Colab</a>,
+        and find the collection / processing tooling on <a href="https://github.com/anthonytec2/OctoSense">GitHub</a>.
+      </p>
+      <pre style="text-align:left; max-width:820px; margin:0 auto; font-size:1.05rem;"><code>hf download anthonytec2/OctoSense --repo-type dataset --local-dir ./octosense</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{bisulco2026octosense,
+  title        = {{OctoSense}: Self-Supervised Learning for Multimodal Robot Perception},
+  author       = {Bisulco, Anthony and Wang, Jeremy and Daniilidis, Kostas and Balestriero, Randall and Chaudhari, Pratik},
+  year         = {2026},
+  howpublished = {Preprint},
+}</code></pre>
+
+    <h2 class="title is-5" style="margin-top:1.5rem;">Acknowledgments</h2>
+    <p class="is-size-5 has-text-grey">
+      This work was supported by grants from the National Science Foundation (IIS-2145164, CCF-2212519),
+      the NSF and DoD OUSD (R&amp;E) under Agreement PHY-2229929 (The NSF AI Institute for Artificial and
+      Natural Intelligence), DSO National Laboratories, Singapore, and the Office of Naval Research DURIP.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered content">
+        <p>
+          Website template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          (<a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>). OctoSense is released under the MIT License.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Diverse-conditions carousel: crossfade the two images + captions every 5s.
+(function () {
+  var slides = document.querySelectorAll('#cond-carousel .cond-slide');
+  var caps = document.querySelectorAll('.cond-cap');
+  if (slides.length < 2) return;
+  var i = 0;
+  setInterval(function () {
+    i = (i + 1) % slides.length;
+    slides.forEach(function (s, k) { s.style.opacity = (k === i) ? '1' : '0'; });
+    caps.forEach(function (c, k) { c.style.display = (k === i) ? 'block' : 'none'; });
+  }, 5000);
+})();
+</script>
 </body>
 </html>
