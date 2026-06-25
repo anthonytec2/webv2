@@ -26,6 +26,15 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <style>
+    /* Sensor spec table: shrink on phones so the columns fit (scrolls if still over). */
+    @media (max-width: 768px) {
+      #sensor-table { font-size: 0.72rem; }
+      #sensor-table td, #sensor-table th { padding: 0.35em 0.4em; }
+      #results-table { font-size: 0.74rem !important; }
+      #results-table td, #results-table th { padding: 0.4rem 0.45rem !important; }
+    }
+  </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -93,7 +102,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline controls width="100%">
-        <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/os_vid.mp4" type="video/mp4">
+        <source src="./static/videos/os_vid.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
         One rig, eight sensors, one clock, synchronized multimodal driving across day, night, and degraded conditions.
@@ -191,7 +200,8 @@
               language.
             </p>
           </div>
-          <table class="table is-fullwidth is-hoverable" style="background:transparent;">
+          <div class="table-container">
+          <table id="sensor-table" class="table is-fullwidth is-hoverable" style="background:transparent;">
             <thead><tr><th>Modality</th><th>Sensor</th><th>Info</th><th>Rate</th></tr></thead>
             <tbody>
               <tr><td><strong>RGB</strong> (stereo)</td><td>2&times; FLIR Blackfly S</td><td>1920&times;1456</td><td>100 Hz</td></tr>
@@ -203,6 +213,7 @@
               <tr><td><strong>Proprioception</strong></td><td>Vehicle CAN / quadruped joints</td><td>steering, throttle, brake / joint angles</td><td>50&ndash;100 Hz</td></tr>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>
@@ -291,7 +302,7 @@
           IMU, GPS, and CAN signals, plus scene captions. Scrub the timeline, rotate the 3D view, and toggle streams,
           right here in the browser.
         </p>
-        <div style="position:relative; width:100%; height:880px; max-height:90vh; max-width:1100px; margin:0 auto; border-radius:6px; overflow:hidden; box-shadow:0 2px 14px rgba(0,0,0,0.15);">
+        <div id="rr-embed" style="position:relative; width:100%; height:880px; max-height:90vh; max-width:1100px; margin:0 auto; border-radius:6px; overflow:hidden; box-shadow:0 2px 14px rgba(0,0,0,0.15);">
           <iframe src="https://app.rerun.io/version/0.33.1/?url=https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/octosense_all.rrd&amp;theme=dark"
                   width="100%" height="100%" style="position:absolute; inset:0; border:0;"
                   loading="lazy" allowfullscreen></iframe>
@@ -370,8 +381,8 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Ground truth</h2>
         <video id="gt" autoplay controls muted loop playsinline width="100%"
-               poster="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/gt_grid_poster.png">
-          <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/gt_grid.mp4" type="video/mp4">
+               poster="./static/images/gt_grid_poster.png">
+          <source src="./static/videos/gt_grid.mp4" type="video/mp4">
         </video>
         <div class="content has-text-justified is-size-5" style="margin-top:1rem;">
           <p>
@@ -564,7 +575,8 @@
 
           <!-- Compact results table (Table 1, daytime test) -->
           <div class="content" style="margin-top:1.5rem;">
-            <table class="table is-hoverable" style="margin:0 auto; max-width:840px; font-size:1.15rem; background:transparent; border-collapse:collapse;">
+            <div class="table-container">
+            <table id="results-table" class="table is-hoverable" style="margin:0 auto; max-width:840px; font-size:1.15rem; background:transparent; border-collapse:collapse;">
               <thead>
                 <tr style="border-bottom:2px solid #363636;">
                   <th style="text-align:left; padding:0.6rem 0.9rem;">Encoder <span class="has-text-grey is-size-6">(daytime test)</span></th>
@@ -590,6 +602,7 @@
                 </tr>
               </tbody>
             </table>
+            </div>
             <p class="is-size-5 has-text-grey" style="max-width:840px; margin:0.9rem auto 0; text-align:center;">Daytime test split; lower is better except segmentation (mIoU over 19 Cityscapes classes), reported where speed &ge; 5&nbsp;mph. Full results, nighttime, and degraded splits are in the paper.</p>
           </div>
         </div>
@@ -611,7 +624,7 @@
           different platforms.
         </p>
         <video id="platforms" autoplay controls muted loop playsinline width="100%" style="max-width:760px; margin:0 auto;">
-          <source src="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/platforms.mp4" type="video/mp4">
+          <source src="./static/videos/platforms.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -692,6 +705,29 @@
     </div>
   </div>
 </footer>
+
+<script>
+// Rerun viewer needs WebGPU/WASM (desktop). On mobile, swap the iframe for a
+// tappable screenshot that links to the full-page viewer.
+(function () {
+  var ua = navigator.userAgent || '';
+  var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(ua) || (coarse && window.innerWidth < 1024);
+  if (!isMobile) return;
+  var el = document.getElementById('rr-embed');
+  if (!el) return;
+  var url = 'https://app.rerun.io/version/0.33.1/?url=https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/octosense_all.rrd&theme=dark';
+  el.style.height = 'auto';
+  el.style.maxHeight = 'none';
+  el.innerHTML =
+    '<a href="' + url + '" target="_blank" rel="noopener" style="display:block; position:relative;">' +
+      '<img src="./static/images/rerun_screenshot.jpg" alt="OctoSense multimodal data in the Rerun viewer" style="width:100%; display:block;">' +
+      '<span style="position:absolute; left:0; right:0; bottom:0; padding:0.55rem; text-align:center; ' +
+      'background:linear-gradient(transparent, rgba(0,0,0,0.78)); color:#fff; font-size:0.9rem;">' +
+      'Interactive viewer needs a desktop browser, tap to open &#8599;</span>' +
+    '</a>';
+})();
+</script>
 
 <script>
 // Diverse-conditions carousel: crossfade the two images + captions every 5s.
