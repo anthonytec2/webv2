@@ -10,14 +10,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="OctoSense: Self-Supervised Learning for Multimodal Robot Perception">
   <meta property="og:description" content="An open sensor platform, a 59-hour time-synchronized multimodal dataset (RGB, event, LiDAR, thermal, IMU, GPS, CAN), and a late-fusion masked autoencoder that stays robust where image-only models fail.">
-  <meta property="og:image" content="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/social_preview.jpg">
+  <meta property="og:image" content="https://abisulco.com/OctoSense/static/images/social_preview.jpg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="720">
   <meta property="og:url" content="https://abisulco.com/OctoSense/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OctoSense: Self-Supervised Learning for Multimodal Robot Perception">
   <meta name="twitter:description" content="An open sensor platform, a 59-hour multimodal dataset, and a late-fusion masked autoencoder robust where image-only models fail.">
-  <meta name="twitter:image" content="https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/social_preview.jpg">
+  <meta name="twitter:image" content="https://abisulco.com/OctoSense/static/images/social_preview.jpg">
   <link rel="icon" type="image/png" href="./static/images/favicon.png">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -105,7 +105,7 @@
         <source src="./static/videos/os_vid.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        One rig, eight sensors, one clock, synchronized multimodal driving across day, night, and degraded conditions.
+        One platform, eight sensors, one clock, synchronized multimodal driving across day, night, and degraded conditions.
       </h2>
     </div>
   </div>
@@ -152,7 +152,7 @@
         <span style="color:#3273dc; display:inline-block;"><i class="fas fa-car fa-4x"></i></span>
         <h3 class="title is-5" style="margin-top:1.1rem;">Platform &amp; dataset</h3>
         <p class="content">
-          An open-source rig with eight time-synchronized sensors, and <strong>59 hours / 2,474 km</strong> of
+          An open-source sensor platform with eight time-synchronized sensors, and <strong>59 hours / 2,474 km</strong> of
           driving, one of the largest event-inclusive robotics datasets, with day, night, and degraded-sensor
           conditions.
         </p>
@@ -186,8 +186,8 @@
           <h2 class="title is-3">The platform &amp; dataset</h2>
           <div class="content has-text-justified is-size-5">
             <p>
-              OctoSense carries <strong>eight sensors</strong> on one rig and places them on a single timeline with a
-              <strong>hardware pulse-per-second clock</strong>, a unique six-pulse identifier every four minutes and fifteen seconds
+              OctoSense aligns all the sensors to a single timeline using our <strong>PPS time-sync hardware</strong>,
+              a unique six-pulse identifier every four minutes and fifteen seconds
               lets every stream realign even after a dropped trigger. At native rates the platform produces ~1.7 GB/s;
               on-board compression (LiDAR/event packets, H.265 video) cuts that <strong>21&times;</strong> to 78.7 MB/s
               with no dropped data. Calibration uses a retro-reflective circle on an AprilGrid jointly visible to the
@@ -231,8 +231,8 @@
       </div>
       <div class="columns is-vcentered">
         <div class="column is-half has-text-centered">
-          <img src="./static/images/hw_cad.png" alt="CAD rendering of the OctoSense sensor rig" style="width:100%; max-width:480px; border-radius:4px;">
-          <p class="is-size-5 has-text-grey" style="margin-top:0.5rem;">CAD of the rig: stereo RGB + event cameras, LiDAR, thermal, IMU, and GPS on one mount.</p>
+          <img src="./static/images/hw_cad.png" alt="CAD rendering of the OctoSense sensor platform" style="width:100%; max-width:480px; border-radius:4px;">
+          <p class="is-size-5 has-text-grey" style="margin-top:0.5rem;">CAD of the sensor platform: stereo RGB + event cameras, LiDAR, thermal, IMU, and GPS on one mount.</p>
         </div>
         <div class="column is-half has-text-centered">
           <img src="./static/images/hw_syncboard.png" alt="Custom time-synchronization circuit board" style="width:100%; max-width:480px; border-radius:4px; background:white; padding:0.5rem;">
@@ -244,14 +244,14 @@
           <div class="content has-text-justified is-size-5">
             <p>
               Everything here is <strong>open source</strong>, the mechanical CAD, the sensor mounts, and the custom
-              electronics. The rig carries all eight sensors on one adjustable bar above a desktop-class CPU, powered by a
+              electronics. The platform carries all eight sensors on one adjustable bar above a desktop-class CPU, powered by a
               24&nbsp;V battery for about an hour of mobile operation.
             </p>
             <p>
               The board on the right is our custom <strong>SyncBoard</strong>, the heart of the platform's hardware time
               synchronization. A temperature-compensated oscillator and a microcontroller generate a pulse-per-second
-              trigger and fan it out across the PCB to every sensor, so all streams are captured on one shared hardware
-              clock.
+              trigger and fan it out across the PCB to every sensor, so each stream can be aligned to a common timeline
+              in post-processing.
             </p>
           </div>
         </div>
@@ -297,7 +297,7 @@
       <div class="column is-full">
         <h2 class="title is-3">Play with the time-synchronized data</h2>
         <p class="content is-size-5">
-          A live <a href="https://rerun.io" target="_blank" rel="noopener">Rerun</a> viewer with a short clip from a
+          A live <a href="https://rerun.io" target="_blank" rel="noopener">Rerun</a> viewer with a short clip (desktop-only) from a
           city drive, every sensor on one shared timeline: stereo RGB + event cameras, infrared, the LiDAR point cloud,
           IMU, GPS, and CAN signals, plus scene captions. Scrub the timeline, rotate the 3D view, and toggle streams,
           right here in the browser.
@@ -475,7 +475,7 @@
             The pretrained encoder is then <strong>frozen</strong>, and lightweight probes read off task predictions. A
             <strong>Dense Prediction Transformer</strong> fuses features from four encoder layers to predict optical flow,
             depth, and segmentation; a separate <strong>attentive probe</strong> cross-attends to the final encoder layer
-            to regress ego-motion, relative pose, steering, speed, and angular/linear velocity. Only these small
+            to regress ego-motion, relative pose, steering, speed, and angular/linear velocity. Only these
             heads are trained per task; the representation itself is never fine-tuned, so the numbers reflect the quality
             of the learned features directly.
           </p>
@@ -559,7 +559,7 @@
               Leave-one-out probes show where each sensor matters: <strong>LiDAR dominates both ego-motion and dense
               prediction</strong>, dropping it alone sends depth from 4.73 to 6.74&nbsp;m and flow from 1.97 to 7.19&nbsp;px,
               while <strong>RGB anchors the tokens for segmentation</strong>. The representation also
-              <strong>transfers zero-shot to M3ED</strong>, a different rig and sensor configuration, staying
+              <strong>transfers zero-shot to M3ED</strong>, a different platform and sensor configuration, staying
               competitive with foundation models trained on orders of magnitude more data.
             </p>
           </div>
@@ -618,7 +618,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-4">Beyond driving</h2>
         <p class="content is-size-5">
-          The same rig has been deployed beyond the car. The data release additionally includes
+          The same sensor platform has been deployed beyond the car. The data release additionally includes
           <strong>boat</strong> and <strong>Unitree Go2-W quadruped</strong> sequences, tagged by a
           <code>platform</code> column in the metadata, a first step toward one perception model across very
           different platforms.
@@ -716,16 +716,15 @@
   if (!isMobile) return;
   var el = document.getElementById('rr-embed');
   if (!el) return;
-  var url = 'https://app.rerun.io/version/0.33.1/?url=https://huggingface.co/datasets/anthonytec2/OctoSense/resolve/main/assets/octosense_all.rrd&theme=dark';
   el.style.height = 'auto';
   el.style.maxHeight = 'none';
   el.innerHTML =
-    '<a href="' + url + '" target="_blank" rel="noopener" style="display:block; position:relative;">' +
+    '<div style="position:relative;">' +
       '<img src="./static/images/rerun_screenshot.jpg" alt="OctoSense multimodal data in the Rerun viewer" style="width:100%; display:block;">' +
       '<span style="position:absolute; left:0; right:0; bottom:0; padding:0.55rem; text-align:center; ' +
       'background:linear-gradient(transparent, rgba(0,0,0,0.78)); color:#fff; font-size:0.9rem;">' +
-      'Interactive viewer needs a desktop browser, tap to open &#8599;</span>' +
-    '</a>';
+      'Interactive viewer available on desktop</span>' +
+    '</div>';
 })();
 </script>
 
